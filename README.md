@@ -16,7 +16,6 @@ This repository collects a number of random thought and experiments about deep l
 -----------------------------------------
 (3) Installation Instructions.
 -----------------------------------------
-
 a - Prepare your python environment.
 pip install -r requirements.txt
 apt-get install python-tk    <--- Check if this is necesary >
