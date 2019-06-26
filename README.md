@@ -11,10 +11,10 @@ This repository collects a number of random thought and experiments about deep l
 
 ## Installation Instructions.
 1. Prepare your python environment.
-pip install -r requirements.txt
-apt-get install python-tk    <--- Check if this is necessary >
+pip install -r requirements.txt  
+apt-get install python-tk    <--- Check if this is necessary >  
 2. Get our code.
-git clone XXXXXX
+git clone XXXXXX  
 
 ## (4) References.
 
