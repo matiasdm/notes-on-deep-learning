@@ -6,6 +6,9 @@ copyright matias di martino (c) 2019 -- matias.di.martino.uy@gmail.com
 
 
 ## Index:
+* file_A
+* file_B
+* file_C
 
 
 ## License information.
@@ -17,7 +20,7 @@ apt-get install python-tk    <--- Check if this is necessary >
 2. Get our code.
 git clone XXXXXX  
 
-## (4) References.
+## References.
 
 emphasis, aka italics, with *asterisks* or _underscores_.  
 Strong emphasis, aka bold, with **asterisks** or __underscores__.  
