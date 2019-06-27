@@ -20,6 +20,8 @@ def toy_data1(n0=1000, n1=3000):
     X = np.vstack((X0,X1))
     y = np.vstack((y0,y1)).squeeze()
 
+    np.random.randint()
+
     # Shuffle data
     i = np.arange(len(y))
     np.random.shuffle(i)
