@@ -28,3 +28,7 @@ def toy_data1(n0=1000, n1=3000):
     X = X[i,:]
     y = y[i]
 return X,y
+
+
+if __name__=='__main__':
+    # Debug and test stuffs lsks ljscji o
