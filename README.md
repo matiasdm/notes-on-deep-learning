@@ -15,9 +15,9 @@ copyright matias di martino (c) 2019 -- matias.di.martino.uy@gmail.com
 
 ## Installation Instructions.
 1. Prepare your python environment.  
-mkvirtualenv ENVNAME -p python3 _create your virtual environment_  
-workon ENVNAME _use your brand new virtual environment_  
-pip install -r requirements.txt _install python libraries_  
+mkvirtualenv ENVNAME -p python3 _create your virtual environment_.  
+workon ENVNAME _use your brand new virtual environment_.  
+pip install -r requirements.txt _install python libraries_.  
 **only if you are using GPUs, install also:**  
 pip install tensorflow-gpu==1.13.1  _only if you have GPUs!_  
 2. Get our code.  
