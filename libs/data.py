@@ -1,7 +1,7 @@
 """
-Create synthetic data, pre-process, etc.
+Create synthetic data, process, etc.
 ----
-matias di martino (c) 2019, matias.di.martino.uy@gmail.com
+Matias Di Martino (c) 2019, matias.di.martino.uy@gmail.com
 """
 import numpy as np
 import matplotlib.pyplot as plt
@@ -10,9 +10,7 @@ import matplotlib.pyplot as plt
 def toy_data1(n0=1000, n1=3000):
     """
     Create toy data 1 which consists of two 1-d Gaussian distributions with mean and std:
-    N0(-.5, .4**2) N1(.5, .3**2). Inputs n0 and n1 set the number of samples from class 0 
-    and 1, respectively. The output contain the samples feature values X.shape = (n0+n1, 1) 
-    and the samples labels y (shape (n0+n1, 1))
+    N0(-.5, .4**2) N1(.5, .3**2). Inputs n0 and n1 set the number of samples from class 0 and 1, respectively. The output contain the samples feature values X.shape = (n0+n1, 1) and the samples labels y (shape (n0+n1, 1))
     """
     X0 = -.5 + .4*np.random.randn(n0,1)  # Gaussian dist with mean -.5 and std .4**2
     X1 = +.5 + .3*np.random.randn(n1,1)  # Gaussian dist with mean +.5 and std .3**2
@@ -27,8 +25,13 @@ def toy_data1(n0=1000, n1=3000):
     np.random.shuffle(i)
     X = X[i,:]
     y = y[i]
-return X,y
+    return X,y
 
 
 if __name__=='__main__':
-    # Debug and test stuffs lsks ljscji o
+    # Debug and test stuffs 
+    X,y = toy_data1(n0=10, n1=20)
+    print(y)
+
+
+    
