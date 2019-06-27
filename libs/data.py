@@ -10,7 +10,9 @@ import matplotlib.pyplot as plt
 def toy_data1(n0=1000, n1=3000):
     """
     Create toy data 1 which consists of two 1-d Gaussian distributions with mean and std:
-    N0(-.5, .4**2) N1(.5, .3**2). Inputs n0 and n1 set the number of samples from class 0 and 1, respectively. The output contain the samples feature values X.shape = (n0+n1, 1) and the samples labels y (shape (n0+n1, 1))
+    N0(-.5, .4**2) N1(.5, .3**2). Inputs n0 and n1 set the number of samples from class 0 
+    and 1, respectively. The output contain the samples feature values X.shape = (n0+n1, 1) 
+    and the samples labels y (shape (n0+n1, 1))
     """
     X0 = -.5 + .4*np.random.randn(n0,1)  # Gaussian dist with mean -.5 and std .4**2
     X1 = +.5 + .3*np.random.randn(n1,1)  # Gaussian dist with mean +.5 and std .3**2
