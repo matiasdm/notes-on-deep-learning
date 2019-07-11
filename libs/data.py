@@ -76,9 +76,32 @@ def toy_data2(n0=100, n1=300, verbose=0):
     return X, y
 
 
+def toy_data3(n=(100,200,300), d=10, verbose=0):
+    """
+    Creates d-dimensional samples of N multivariate Gaussian distributions. n is a N-tuple with the number of samples from each class (e.g. n=(20, 30, 15)). Each distribution is a random gaussian with random mean and covariance matrix.  
+    """
+
+    X = np.empty((0,d))
+    y = np.empty((0,1))
+
+    for (c,nci) in enumerate(n):  # for each class
+        X0 = np.random.normal(loc=1, scale=1, size=(d,nci))  # N(1,1) n random vectors dim d
+        # X0 has components iid with mu="1"=[1 .... 1] and sigma=Id
+        A = np.random.uniform(low=0, high=1, size=(d,d))  # A random dxd matrix 
+        Xi = np.transpose(np.dot(A,X0))  # Xi has mu = A*"1" and std = A A^t
+        # See Larry Wasserman "All of Statistics", pg 54. 
+
+        yi = c*np.ones((nci,1))
+        
+        X = np.vstack((X,Xi))
+        y = np.vstack((y,yi))
+
+    return X, y.squeeze()
+
+
 if __name__=='__main__':
     # Debug and test stuffs 
-    X,y = toy_data2(n0=100, n1=200, verbose=1)
+    X,y = toy_data3(n=(2,5,3), d=2)
     print(y)
 
     
