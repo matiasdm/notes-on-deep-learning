@@ -80,18 +80,30 @@ def toy_data3(n=(100,200,300), d=10, verbose=0):
     """
     Creates d-dimensional samples of N multivariate Gaussian distributions. n is a N-tuple with the number of samples from each class (e.g. n=(20, 30, 15)). Each distribution is a random gaussian with random mean and covariance matrix.  
     """
+    sigma_0 = .5  # Sets an order of magnitude for the std of the samples. 
+    k = 5  # Number of N(0,1) variables combined (this avoid overlapping of dist when d --> inf)
+
 
     X = np.empty((0,d))
     y = np.empty((0,1))
 
     for (c,nci) in enumerate(n):  # for each class
-        X0 = np.random.normal(loc=1, scale=1, size=(d,nci))  # N(1,1) n random vectors dim d
-        # X0 has components iid with mu="1"=[1 .... 1] and sigma=Id
-        A = np.random.uniform(low=0, high=1, size=(d,d))  # A random dxd matrix 
-        Xi = np.transpose(np.dot(A,X0))  # Xi has mu = A*"1" and std = A A^t
-        # See Larry Wasserman "All of Statistics", pg 54. 
+        X0 = np.random.normal(loc=0, scale=1, size=(d,nci))  # N(0,1) n random vectors dim d
+        # X0 has components iid with mu=0 and sigma=Id
+        A = np.random.uniform(low=0, high=sigma_0, size=(d,d))  # A random dxd matrix 
+        # X0 are nci iid d-dimensional vectors N(0,1), now we are creating a new random variable
+        # X1 = mu + A*X0 with both mu and A random. (This sets a random mean and a random variance, because A is random there is going to be correlation between the dimensions.) If we leave A like this, as d --> inf we will be combining infinite random variables and so all the classes are going to tend to be more overlapped. To avoid this, only k elements of each row of A will be kept active. This way, we ensure that only an average of k variables is performed (independently of d), this is going to produce a more stable distribution across d. 
+        A[A>sigma_0*k/d] = 0
 
-        yi = c*np.ones((nci,1))
+        Xi = np.dot(A,X0)  # Xi has mu = A*"0"=0 and var = A A^t
+        mu = np.random.uniform(size=(d,1)) / np.sqrt(d) # random mean
+        # mu = np.random.uniform(size=(d,1)) 
+        Xi = Xi + np.dot(mu, np.ones((1,nci)))  # add a random mean
+        # See Larry Wasserman "All of Statistics", pg 54. 
+        # Now Xi has random mean mu ~ U[0,1]^d and var = A A^t (A ~ U[0,1]^(dxd))
+        Xi = np.transpose(Xi)
+
+        yi = c*np.ones((nci,1))  # Define the labels. 
         
         X = np.vstack((X,Xi))
         y = np.vstack((y,yi))
