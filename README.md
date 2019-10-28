@@ -34,14 +34,14 @@ Strikethrough uses two tildes. ~~Scratch this.~~
 
 
 ## Installing pre-requisites: (this is for mac, if you are in linux is similar, in windows idk)
-Install python:
-$brew install python
-Check that it is correctly installed
-$python3 --version 
-$Python 3.x.x
+Install python:  
+$brew install python.  
+Check that it is correctly installed. 
+$python3 --version.     
+$Python 3.x.x     
 
-Install pip:
-$sudo easy_install pip
+Install pip:  
+$sudo easy_install pip    
 
 Install virtualenvwrapper:
 $sudo pip install virtualenvwrapper   (maybe you have to use pip3 to install it in python3)
